@@ -1,11 +1,20 @@
 $(function() {
  $("#grocerylist").submit(function(event) {
-var blanks = ["item1", "item2", "item3", "item4", "item5"];
+  //  debugger;
+  var blanks = ["item1", "item2", "item3", "item4", "item5"];//sorted
+  var groceries =[];
+  blanks.map(function(blank) { //full o stuff
+    var userInput = $("#" + blank).val();
+    groceries.push(userInput);
+  });
 
-blanks.forEach(function(blank) {
-  var userInput = $("input#" + blank).val();
-  $("." + blank).text(userInput);
-});
+  groceries.sort();
+
+  groceries.forEach(function(grocery) {
+    $("#output").append("<li>" + grocery.toUpperCase() + "</li>");
+  });
+  //i am now sorted!
+  //another loop through groceries here
 
    $(".showlist").show();
    $("#itemlist").hide();
